@@ -1,0 +1,62 @@
+.kt-portlet__head .kt-subheader__toolbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0;
+}
+
+.kt-portlet__head .kt-subheader__toolbar .btn-group {
+    margin-left: 0.25rem;
+}
+
+.formError {
+    background-color: white !important;
+    border: none !important;
+    color: #fd397a !important;
+    margin: auto !important;
+}
+
+.dataTablePagination {
+    display: none;
+}
+
+.formFilter {
+    width: 100%;
+}
+
+.updateBlockDiv {
+    position: absolute;
+    width: 90%;
+    height: 100%;
+    z-index: 10;
+}
+
+.dateField::-webkit-inner-spin-button,
+.dateField::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
+.hideActions {
+    display: none;
+}
+
+.greenColor {
+    color: #09ba87;
+}
+
+.dropdown-item {
+    cursor: pointer !important;
+}
+
+/* .kt-datatable__detail > table > .kt-datatable__row:last-child {
+    display: none !important;
+} */
+
+.orrangecolor {
+    color: #ffb822 !important;
+}
+
+.kt-badge.kt-badge--danger.orrangecolor {
+    background: #ffb822 !important;
+}

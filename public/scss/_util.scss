@@ -1,0 +1,16 @@
+.title {
+  &__primary {
+    color: var(--normal-blue);
+    text-transform: uppercase;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    @include font_bold;
+  }
+  &__secondary {
+    color: var(--dark-blue);
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    @include font_bold;
+  }
+}

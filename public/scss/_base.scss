@@ -1,0 +1,105 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+ul {
+  list-style: none;
+  display: block;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+}
+//Media Query : --------------------
+
+@mixin respond_phone-port {
+  @media (max-width: 400px) {
+    @content;
+  }
+}
+@mixin respond_phone-land {
+  @media (max-width: 600px) {
+    @content;
+  }
+}
+@mixin respond_tab-port {
+  @media (max-width: 786px) {
+    @content;
+  }
+}
+@mixin respond_tab-land {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin respond_small-desktop {
+  @media (max-width: 1100px) {
+    @content;
+  }
+}
+
+@mixin respond_desktop {
+  @media (max-width: 1300px) {
+    @content;
+  }
+}
+
+@mixin respond_big-desktop {
+  @media (min-width: 1400px) {
+    @content;
+  }
+}
+
+//Set variables :--------------------------
+:root {
+  --normal-blue: #004177;
+  --normal-blue-secondary: rgba(0, 65, 119, 0.5);
+  --normal-blue-tertiary: #1e9ff2;
+  --dark-blue: #021525;
+  --light-blue: #00cec8;
+  --lighter-blue: rgba(0, 206, 200, 0.1);
+  --red: #ff6464;
+  --backgroundColor: #f8fdff;
+  --contentColor: #2c343b;
+  --gray: rgba(0, 65, 119, 0.1);
+
+  //Make 1rem =10px:
+
+  @include respond_big-desktop {
+    font-size: 65%;
+  }
+
+  @include respond_tab-land {
+    font-size: 63%;
+  }
+
+  font-size: 60%;
+
+  @include respond_phone-land {
+    font-size: 50%;
+  }
+}
+
+@mixin font_regular {
+  font-weight: 400;
+}
+@mixin font_bold {
+  font-weight: 700;
+}
+@mixin font_regular-italic {
+  font-weight: 400;
+  font-style: italic;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  background-color: var(--backgroundColor);
+}

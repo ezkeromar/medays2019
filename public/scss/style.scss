@@ -1,0 +1,317 @@
+@import "./base";
+@import "./components";
+@import "./util";
+
+.header {
+  background-color: var(--normal-blue);
+  color: white;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+
+  @include font_regular;
+
+  & a:link,
+  & a:visited {
+    text-decoration: none;
+    color: inherit;
+  }
+  &__title {
+    @include font-regular;
+    display: block;
+    text-align: center;
+    padding: 2rem;
+    margin-right: 3rem;
+    @include respond_tab-port {
+      width: 100%;
+      order: 1;
+      margin-right: 0;
+      margin-top: 1rem;
+    }
+  }
+}
+
+@mixin side-menu {
+  &__burger {
+    position: relative;
+    cursor: pointer;
+    width: 3rem;
+    height: 3rem;
+    display: none;
+    @include respond_tab-port {
+      display: block;
+    }
+    z-index: 11;
+  }
+
+  &__burger:hover &__span {
+    &::before {
+      transform: translateY(-8px);
+    }
+    &::after {
+      transform: translateY(8px);
+    }
+  }
+
+  &__span {
+    top: 50%;
+    left: 50%;
+    &,
+    &::after,
+    &::before {
+      position: absolute;
+      display: block;
+      width: 3rem;
+      height: 2px;
+      background-color: white;
+      border-radius: 2px;
+      content: "";
+      transition: all 0.3s;
+      transform: translate(-50%, -50%);
+    }
+
+    &::after {
+      transform: translateY(10px);
+    }
+    &::before {
+      transform: translateY(-10px);
+    }
+  }
+  &__checkbox {
+    display: none;
+  }
+
+  &__checkbox:checked ~ &__logo-burger_container &__burger &__span {
+    background-color: transparent;
+    &::before {
+      transform: rotate(45deg);
+    }
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+
+  &__checkbox:checked ~ &__menu {
+    transform: translateX(0);
+  }
+  &__shadow {
+    display: none;
+    @include respond_tab-port {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 9;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(1, 1, 1, 0.6);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+    }
+  }
+
+  &__checkbox:checked ~ &__shadow {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.navbar {
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 1rem 2rem;
+  margin: auto;
+  @include respond_tab-port {
+    flex-wrap: wrap;
+  }
+  &__logo-burger_container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 11;
+    @include respond_phone-land {
+      width: 70%;
+    }
+  }
+  &__logo {
+    height: 7rem;
+    & > image {
+      height: 100%;
+      @include respond_tab-port {
+        width: 70%;
+      }
+    }
+    @include respond_tab-port {
+      width: 100%;
+      // margin-left: 2rem;
+    }
+  }
+
+  @include side-menu;
+
+  &__lang {
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem 3rem;
+    height: fit-content;
+  }
+  &__menu {
+    font-size: 1.8rem;
+    width: 60%;
+    border: 1px solid white;
+    border-radius: 20rem;
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem 3rem;
+    @include respond_tab-port {
+      position: fixed;
+      padding: 30%;
+      padding-top: 10rem;
+      padding-left: 6rem;
+      transform: translateX(-100%);
+      top: 0;
+      left: 0;
+      background-color: var(--normal-blue);
+      border: none;
+      border-radius: unset;
+      display: block;
+      width: auto;
+      height: 100vh;
+      transition: all 0.3s;
+      z-index: 10;
+    }
+  }
+
+  &__lang {
+    font-size: 1.6rem;
+    width: 10%;
+  }
+  &__separator {
+    width: 1px;
+    border-left: 1px solid white;
+  }
+  &__menu &__item {
+    @include respond_tab-port {
+      padding: 1rem 2rem;
+      padding-right: 4rem;
+    }
+  }
+  &__menu &__separator {
+    margin: 0 2rem;
+    @include respond_tab-port {
+      display: none;
+    }
+  }
+  &__lang &__separator {
+    margin: 0 1rem;
+  }
+
+  &__item {
+    cursor: pointer;
+    transition: all 0.2s;
+    &:hover,
+    &--active {
+      color: var(--red);
+    }
+  }
+}
+
+.content {
+  color: var(--contentColor);
+  min-height: calc(90vh - 5rem);
+  margin-top: 10rem;
+  @include respond_tab-port {
+    margin-top: 18rem;
+  }
+  &__container {
+    max-width: 1200px;
+    margin: auto;
+    width: 100%;
+    padding: 0 2rem;
+  }
+  &__step {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    @include respond_tab-port {
+      flex-direction: column;
+    }
+
+    &--step0 {
+      flex-direction: column;
+    }
+  }
+}
+
+.tail-datetime-calendar .calendar-actions span.action-prev,
+.tail-datetime-calendar .calendar-actions span.action-next {
+  display: none;
+}
+.tail-datetime-calendar .calendar-actions span.label {
+  pointer-events: none;
+}
+.calendar-close {
+  display: none !important;
+}
+
+.footer {
+  background-color: var(--dark-blue);
+  @include font_regular;
+  font-size: 1.4rem;
+  &__container {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: auto;
+    @include respond_tab-port {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  & a {
+    padding: 1rem 2rem;
+  }
+  &__conds-rights {
+    display: flex;
+    @include respond_phone-land {
+      display: block;
+    }
+  }
+
+  &__rights,
+  &__conditions {
+    display: block;
+    @include respond_tab-port {
+      width: 50%;
+    }
+    @include respond_phone-land {
+      width: 100%;
+    }
+  }
+
+  &__link-logo {
+    @include respond_tab-port {
+      order: -1;
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__logo {
+    width: 15rem;
+    height: 10rem;
+    & * {
+      fill: white;
+    }
+  }
+}
